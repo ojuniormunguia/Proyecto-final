@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Fernando\Documents\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\
+C:\Users\theoj\OneDrive\Documentos\ProyectoFinal\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\
 ProyectoFinal
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-D:\Fernando\Documents\Proyecto-final\ProyectoFinal\App.xaml
+C:\Users\theoj\OneDrive\Documentos\ProyectoFinal\Proyecto-final\ProyectoFinal\App.xaml
 3-422170546
 
 10-1870732959
-201-1154400728
+2011109191510
 MainWindow.xaml;MovieDetailsWindow.xaml;SeatSelectionWindow.xaml;
 
-False
+True
 
