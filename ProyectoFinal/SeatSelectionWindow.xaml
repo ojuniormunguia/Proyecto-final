@@ -1,26 +1,50 @@
 ﻿<Window x:Class="ProyectoFinal.SeatSelectionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProyectoFinal"
-        mc:Ignorable="d"
-        Title="SeatSelectionWindow" Height="450" Width="800">
+        Title="Selección de Asientos" Height="600" Width="1000">
     <Grid>
-        <UniformGrid Columns="10" Rows="10" Margin="10">
-            <ItemsControl ItemsSource="{Binding Seats}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Button Content="{Binding SeatNumber}" 
-                                IsEnabled="{Binding IsAvailable}" 
-                                Background="{Binding IsSelected, Converter={StaticResource BooleanToBrushConverter}}"
-                                Command="{Binding DataContext.ToggleSeatCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
-                                CommandParameter="{Binding}" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </UniformGrid>
-        <Button Content="Siguiente" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10"
-                Command="{Binding SiguienteCommand}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Selección de Asientos" FontSize="20" FontWeight="Bold" Margin="10"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Margin="10" BorderBrush="Gray" BorderThickness="1">
+                <ScrollViewer>
+                    <ItemsControl ItemsSource="{Binding Seats}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding SeatNumber}" 
+                                        Width="40" Height="40" Margin="5"
+                                        IsEnabled="{Binding IsAvailable}" 
+                                        Background="{Binding IsSelected, Converter={StaticResource BooleanToBrushConverter}}"
+                                        Command="{Binding DataContext.ToggleSeatCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
+                                        CommandParameter="{Binding}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+
+            <StackPanel Grid.Column="1" Margin="10">
+                <TextBlock Text="{Binding SelectedMovie.Title}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBlock Text="{Binding SelectedMovie.Room}" FontSize="16" Margin="0,0,0,5"/>
+                <TextBlock Text="{Binding SelectedMovie.Format}" FontSize="16" Margin="0,0,0,5"/>
+                <Button Content="Reservar" Width="150" Height="40" Background="Red" Foreground="White" Margin="0,20,0,0"
+                        Command="{Binding ReservarCommand}"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

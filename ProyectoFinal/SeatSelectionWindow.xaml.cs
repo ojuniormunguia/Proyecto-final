@@ -20,19 +20,21 @@ namespace ProyectoFinal
     {
         public ObservableCollection<Seat> Seats { get; set; }
         public ICommand ToggleSeatCommand { get; }
-        public ICommand SiguienteCommand { get; }
+        public ICommand ReservarCommand { get; }
+        public Movie SelectedMovie { get; set; }
 
         private int MovieID { get; }
         private int ScheduleID { get; }
 
-        public SeatSelectionWindow(int movieID, int scheduleID)
+        public SeatSelectionWindow(int movieID, int scheduleID, Movie selectedMovie)
         {
             InitializeComponent();
             MovieID = movieID;
             ScheduleID = scheduleID;
+            SelectedMovie = selectedMovie ?? throw new ArgumentNullException(nameof(selectedMovie));
             Seats = new ObservableCollection<Seat>();
             ToggleSeatCommand = new RelayCommand(ToggleSeat);
-            SiguienteCommand = new RelayCommand(Siguiente);
+            ReservarCommand = new RelayCommand(Reservar);
             this.DataContext = this;
             LoadSeatsFromDatabase();
         }
@@ -63,7 +65,7 @@ namespace ProyectoFinal
                 }
             }
 
-            // Add remaining seats if not all 93 seats are in the database
+            // Agregar asientos restantes si no todos los 93 asientos están en la base de datos
             for (int i = 1; i <= 93; i++)
             {
                 if (Seats.All(s => s.SeatNumber != i))
@@ -78,7 +80,7 @@ namespace ProyectoFinal
             }
         }
 
-        private void ToggleSeat(object parameter)
+        private void ToggleSeat(object? parameter)
         {
             if (parameter is Seat seat)
             {
@@ -86,7 +88,7 @@ namespace ProyectoFinal
             }
         }
 
-        private void Siguiente(object parameter)
+        private void Reservar(object? parameter)
         {
             string connectionString = "Host=hansken.db.elephantsql.com;Username=fvlwmckt;Password=Axo0Bex988-66RWSC_tnApCZrm7hn7k3;Database=fvlwmckt";
             using (var conn = new NpgsqlConnection(connectionString))
@@ -96,19 +98,18 @@ namespace ProyectoFinal
                 {
                     foreach (var seat in Seats.Where(s => s.IsSelected))
                     {
-                        string query = "INSERT INTO seats (ScheduleID, SeatNumber, IsAvailable) VALUES (@ScheduleID, @SeatNumber, @IsAvailable)";
+                        string query = "UPDATE seats SET IsAvailable = @IsAvailable WHERE SeatID = @SeatID";
                         using (var cmd = new NpgsqlCommand(query, conn))
                         {
-                            cmd.Parameters.AddWithValue("ScheduleID", ScheduleID);
-                            cmd.Parameters.AddWithValue("SeatNumber", seat.SeatNumber);
-                            cmd.Parameters.AddWithValue("IsAvailable", false); // Assume seat becomes unavailable once selected
+                            cmd.Parameters.AddWithValue("SeatID", seat.SeatID);
+                            cmd.Parameters.AddWithValue("IsAvailable", false);
                             cmd.ExecuteNonQuery();
                         }
                     }
                     transaction.Commit();
                 }
             }
-            MessageBox.Show("Seats have been successfully updated!");
+            MessageBox.Show("¡Los asientos han sido reservados con éxito!");
             this.Close();
         }
     }
@@ -123,29 +124,30 @@ namespace ProyectoFinal
 
     public class RelayCommand : ICommand
     {
-        private readonly Action<object> _execute;
-        private readonly Func<object, bool> _canExecute;
+        private readonly Action<object?> _execute;
+        private readonly Func<object?, bool>? _canExecute;
 
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        public RelayCommand(Action<object?> execute, Func<object?, bool>? canExecute = null)
         {
             _execute = execute ?? throw new ArgumentNullException(nameof(execute));
             _canExecute = canExecute;
         }
 
-        public bool CanExecute(object parameter)
+        public bool CanExecute(object? parameter)
         {
             return _canExecute == null || _canExecute(parameter);
         }
 
-        public void Execute(object parameter)
+        public void Execute(object? parameter)
         {
             _execute(parameter);
         }
 
-        public event EventHandler CanExecuteChanged
+        public event EventHandler? CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
     }
+
 }

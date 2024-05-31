@@ -1,40 +1,39 @@
 ﻿<Window x:Class="ProyectoFinal.MovieDetailsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ProyectoFinal"
-        mc:Ignorable="d"
-        Title="MovieDetailsWindow" Height="450" Width="800">
+        Title="Detalles de la Película" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <!-- Movie Details Section -->
-        <StackPanel Grid.Column="0" Margin="10">
-            <Image Source="{Binding SelectedMovie.ImageURL}" Height="300"/>
-            <TextBlock Text="{Binding SelectedMovie.Title}" FontWeight="Bold" FontSize="24" Margin="10,0,0,0"/>
-            <TextBlock Text="{Binding SelectedMovie.Description}" TextWrapping="Wrap" Margin="10,10,0,0"/>
-        </StackPanel>
+        <TextBlock Text="Detalles de la Película" FontSize="24" FontWeight="Bold" Margin="10"/>
 
-        <!-- Schedule List Section -->
-        <ListView Grid.Column="1" Margin="10" ItemsSource="{Binding Schedules}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Sala" DisplayMemberBinding="{Binding SalaNumber}" Width="50"/>
-                    <GridViewColumn Header="Hour" DisplayMemberBinding="{Binding ScheduleDate}" Width="100"/>
-                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding MovieTitle}" Width="200"/>
-                    <GridViewColumn Header="Action" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Select" Command="{Binding DataContext.SelectScheduleCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Margin="10">
+                <Image Source="{Binding ImageURL}" Width="200" Height="300" Margin="0,10,0,0"/>
+                <TextBlock Text="{Binding Title}" FontSize="20" FontWeight="Bold" Margin="0,10,0,0"/>
+                <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="10">
+                <TextBlock Text="Seleccionar Función" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                <ItemsControl ItemsSource="{Binding Schedules}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Time}" Width="200" Margin="5"
+                                    Command="{Binding DataContext.SelectScheduleCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
+                                    CommandParameter="{Binding}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

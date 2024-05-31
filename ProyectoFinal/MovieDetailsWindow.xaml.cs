@@ -18,30 +18,28 @@ namespace ProyectoFinal
 {
     public partial class MovieDetailsWindow : Window
     {
-        public Movie SelectedMovie { get; set; }
         public ObservableCollection<Schedule> Schedules { get; set; }
         public ICommand SelectScheduleCommand { get; }
 
         public MovieDetailsWindow(Movie movie)
         {
             InitializeComponent();
-            SelectedMovie = movie;
+            DataContext = movie;
             Schedules = new ObservableCollection<Schedule>();
             SelectScheduleCommand = new RelayCommand(SelectSchedule);
-            this.DataContext = this;
-            LoadSchedulesFromDatabase();
+            LoadSchedulesFromDatabase(movie.MovieID);
         }
 
-        private void LoadSchedulesFromDatabase()
+        private void LoadSchedulesFromDatabase(int movieID)
         {
             string connectionString = "Host=hansken.db.elephantsql.com;Username=fvlwmckt;Password=Axo0Bex988-66RWSC_tnApCZrm7hn7k3;Database=fvlwmckt";
             using (var conn = new NpgsqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT ScheduleID, ScheduleDate, SalaNumber FROM schedules WHERE MovieID = @MovieID";
+                string query = "SELECT ScheduleID, schedule_time FROM schedules WHERE MovieID = @MovieID";
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("MovieID", SelectedMovie.MovieID);
+                    cmd.Parameters.AddWithValue("MovieID", movieID);
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -49,9 +47,7 @@ namespace ProyectoFinal
                             Schedules.Add(new Schedule
                             {
                                 ScheduleID = reader.GetInt32(0),
-                                ScheduleDate = reader.GetDateTime(1),
-                                SalaNumber = reader.GetInt32(2),
-                                MovieTitle = SelectedMovie.Title
+                                Time = reader.GetString(1)
                             });
                         }
                     }
@@ -63,8 +59,9 @@ namespace ProyectoFinal
         {
             if (parameter is Schedule schedule)
             {
-                var seatSelectionWindow = new SeatSelectionWindow(SelectedMovie.MovieID, schedule.ScheduleID);
+                var seatSelectionWindow = new SeatSelectionWindow(schedule.MovieID, schedule.ScheduleID, DataContext as Movie);
                 seatSelectionWindow.Show();
+                this.Close();
             }
         }
     }
@@ -72,8 +69,7 @@ namespace ProyectoFinal
     public class Schedule
     {
         public int ScheduleID { get; set; }
-        public DateTime ScheduleDate { get; set; }
-        public int SalaNumber { get; set; }
-        public string MovieTitle { get; set; }
+        public int MovieID { get; set; }
+        public string Time { get; set; }
     }
 }
