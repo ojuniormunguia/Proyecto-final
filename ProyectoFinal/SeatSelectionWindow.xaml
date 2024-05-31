@@ -8,42 +8,26 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Selección de Asientos" FontSize="20" FontWeight="Bold" Margin="10"/>
+        <TextBlock Text="Seleccionar Asientos" FontSize="24" FontWeight="Bold" Margin="10"/>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Margin="10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Margin="10" BorderBrush="Gray" BorderThickness="1">
-                <ScrollViewer>
-                    <ItemsControl ItemsSource="{Binding Seats}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Horizontal"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Button Content="{Binding SeatNumber}" 
-                                        Width="40" Height="40" Margin="5"
-                                        IsEnabled="{Binding IsAvailable}" 
-                                        Background="{Binding IsSelected, Converter={StaticResource BooleanToBrushConverter}}"
-                                        Command="{Binding DataContext.ToggleSeatCommand, RelativeSource={RelativeSource AncestorType=Window}}" 
-                                        CommandParameter="{Binding}"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>
-            </Border>
+            <StackPanel Grid.Column="0" Margin="10">
+                <ItemsControl ItemsSource="{Binding Seats}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding SeatNumber}" IsChecked="{Binding IsSelected, Mode=TwoWay}" Margin="5"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
 
             <StackPanel Grid.Column="1" Margin="10">
-                <TextBlock Text="{Binding SelectedMovie.Title}" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                <TextBlock Text="{Binding SelectedMovie.Room}" FontSize="16" Margin="0,0,0,5"/>
-                <TextBlock Text="{Binding SelectedMovie.Format}" FontSize="16" Margin="0,0,0,5"/>
-                <Button Content="Reservar" Width="150" Height="40" Background="Red" Foreground="White" Margin="0,20,0,0"
-                        Command="{Binding ReservarCommand}"/>
+                <Button Content="Reservar" Command="{Binding ReservarCommand}" Width="200" Height="50"/>
             </StackPanel>
         </Grid>
     </Grid>

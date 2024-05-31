@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,15 +18,14 @@ using System.Windows.Shapes;
 
 namespace ProyectoFinal
 {
-    public partial class SeatSelectionWindow : Window
+    public partial class SeatSelectionWindow : Window, INotifyPropertyChanged
     {
+        public int MovieID { get; set; }
+        public int ScheduleID { get; set; }
+        public Movie SelectedMovie { get; set; }
         public ObservableCollection<Seat> Seats { get; set; }
         public ICommand ToggleSeatCommand { get; }
         public ICommand ReservarCommand { get; }
-        public Movie SelectedMovie { get; set; }
-
-        private int MovieID { get; }
-        private int ScheduleID { get; }
 
         public SeatSelectionWindow(int movieID, int scheduleID, Movie selectedMovie)
         {
@@ -35,7 +36,7 @@ namespace ProyectoFinal
             Seats = new ObservableCollection<Seat>();
             ToggleSeatCommand = new RelayCommand(ToggleSeat);
             ReservarCommand = new RelayCommand(Reservar);
-            this.DataContext = this;
+            DataContext = this;
             LoadSeatsFromDatabase();
         }
 
@@ -80,7 +81,7 @@ namespace ProyectoFinal
             }
         }
 
-        private void ToggleSeat(object? parameter)
+        private void ToggleSeat(object parameter)
         {
             if (parameter is Seat seat)
             {
@@ -88,7 +89,7 @@ namespace ProyectoFinal
             }
         }
 
-        private void Reservar(object? parameter)
+        private void Reservar(object parameter)
         {
             string connectionString = "Host=hansken.db.elephantsql.com;Username=fvlwmckt;Password=Axo0Bex988-66RWSC_tnApCZrm7hn7k3;Database=fvlwmckt";
             using (var conn = new NpgsqlConnection(connectionString))
@@ -112,42 +113,92 @@ namespace ProyectoFinal
             MessageBox.Show("¡Los asientos han sido reservados con éxito!");
             this.Close();
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
     }
 
-    public class Seat
+    public class Seat : INotifyPropertyChanged
     {
-        public int SeatID { get; set; }
-        public int SeatNumber { get; set; }
-        public bool IsAvailable { get; set; }
-        public bool IsSelected { get; set; }
+        private int _seatID;
+        public int SeatID
+        {
+            get => _seatID;
+            set
+            {
+                _seatID = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _seatNumber;
+        public int SeatNumber
+        {
+            get => _seatNumber;
+            set
+            {
+                _seatNumber = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isAvailable;
+        public bool IsAvailable
+        {
+            get => _isAvailable;
+            set
+            {
+                _isAvailable = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
     }
 
     public class RelayCommand : ICommand
     {
-        private readonly Action<object?> _execute;
-        private readonly Func<object?, bool>? _canExecute;
+        private readonly Action<object> _execute;
+        private readonly Func<object, bool> _canExecute;
 
-        public RelayCommand(Action<object?> execute, Func<object?, bool>? canExecute = null)
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
             _execute = execute ?? throw new ArgumentNullException(nameof(execute));
             _canExecute = canExecute;
         }
 
-        public bool CanExecute(object? parameter)
+        public bool CanExecute(object parameter)
         {
             return _canExecute == null || _canExecute(parameter);
         }
 
-        public void Execute(object? parameter)
+        public void Execute(object parameter)
         {
             _execute(parameter);
         }
 
-        public event EventHandler? CanExecuteChanged
+        public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
     }
-
 }

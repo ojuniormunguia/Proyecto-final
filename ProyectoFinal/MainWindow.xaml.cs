@@ -1,5 +1,7 @@
 ﻿using Npgsql;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,11 +15,40 @@ using System.Windows.Shapes;
 
 namespace ProyectoFinal
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public ObservableCollection<Movie> Movies { get; set; }
-        public ObservableCollection<Movie> FilteredMovies { get; set; }
-        public Movie FeaturedMovie { get; set; }
+        private ObservableCollection<Movie> _movies;
+        public ObservableCollection<Movie> Movies
+        {
+            get => _movies;
+            set
+            {
+                _movies = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Movie> _filteredMovies;
+        public ObservableCollection<Movie> FilteredMovies
+        {
+            get => _filteredMovies;
+            set
+            {
+                _filteredMovies = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Movie _featuredMovie;
+        public Movie FeaturedMovie
+        {
+            get => _featuredMovie;
+            set
+            {
+                _featuredMovie = value;
+                OnPropertyChanged();
+            }
+        }
 
         public MainWindow()
         {
@@ -26,36 +57,43 @@ namespace ProyectoFinal
             FilteredMovies = new ObservableCollection<Movie>();
             DataContext = this;
             LoadMoviesFromDatabase();
-        }   
+        }
 
-        private void LoadMoviesFromDatabase()
+        private async void LoadMoviesFromDatabase()
         {
-            string connectionString = "Host=hansken.db.elephantsql.com;Username=fvlwmckt;Password=Axo0Bex988-66RWSC_tnApCZrm7hn7k3;Database=fvlwmckt";
-            using (var conn = new NpgsqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                string query = "SELECT MovieID::int, Title, Description, ImageURL FROM movies";
-                using (var cmd = new NpgsqlCommand(query, conn))
-                using (var reader = cmd.ExecuteReader())
+                string connectionString = "Host=hansken.db.elephantsql.com;Username=fvlwmckt;Password=Axo0Bex988-66RWSC_tnApCZrm7hn7k3;Database=fvlwmckt";
+                using (var conn = new NpgsqlConnection(connectionString))
                 {
-                    while (reader.Read())
+                    await conn.OpenAsync();
+                    string query = "SELECT MovieID::int, Title, Description, ImageURL FROM movies";
+                    using (var cmd = new NpgsqlCommand(query, conn))
+                    using (var reader = await cmd.ExecuteReaderAsync())
                     {
-                        var movie = new Movie
+                        while (await reader.ReadAsync())
                         {
-                            MovieID = reader.GetInt32(0),
-                            Title = reader.GetString(1),
-                            Description = reader.GetString(2),
-                            ImageURL = reader.GetString(3)
-                        };
-                        Movies.Add(movie);
-                        FilteredMovies.Add(movie); // Initialize FilteredMovies with all movies
+                            var movie = new Movie
+                            {
+                                MovieID = reader.GetInt32(0),
+                                Title = reader.GetString(1),
+                                Description = reader.GetString(2),
+                                ImageURL = reader.GetString(3)
+                            };
+                            Movies.Add(movie);
+                            FilteredMovies.Add(movie); // Initialize FilteredMovies with all movies
+                        }
                     }
                 }
-            }
 
-            // Set a random featured movie
-            if (Movies.Count > 0)
-                FeaturedMovie = Movies[new Random().Next(Movies.Count)];
+                // Set a random featured movie
+                if (Movies.Count > 0)
+                    FeaturedMovie = Movies[new Random().Next(Movies.Count)];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading movies: {ex.Message}");
+            }
         }
 
         private void Movie_Click(object sender, RoutedEventArgs e)
@@ -110,13 +148,64 @@ namespace ProyectoFinal
                 textBox.Foreground = System.Windows.Media.Brushes.Gray;
             }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
     }
 
-    public class Movie
+    public class Movie : INotifyPropertyChanged
     {
-        public int MovieID { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string ImageURL { get; set; }
+        private int _movieID;
+        public int MovieID
+        {
+            get => _movieID;
+            set
+            {
+                _movieID = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _title;
+        public string Title
+        {
+            get => _title;
+            set
+            {
+                _title = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _description;
+        public string Description
+        {
+            get => _description;
+            set
+            {
+                _description = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _imageURL;
+        public string ImageURL
+        {
+            get => _imageURL;
+            set
+            {
+                _imageURL = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
     }
 }
