@@ -36,25 +36,23 @@
                              TextChanged="SearchBox_TextChanged"/>
 
                     <!-- Movie List -->
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <ListView Name="MoviesListView" Margin="0,10,0,0" ItemsSource="{Binding FilteredMovies}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Border Padding="10" Margin="5">
-                                        <StackPanel Orientation="Vertical" MouseDown="Movie_Click">
-                                            <Image Source="{Binding ImageURL}" Height="100" Width="75"/>
-                                            <TextBlock Text="{Binding Title}" FontWeight="Bold" TextAlignment="Center"/>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel Orientation="Horizontal"/>
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                        </ListView>
-                    </ScrollViewer>
+                    <ListView Name="MoviesListView" Margin="0,10,0,0" ItemsSource="{Binding FilteredMovies}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Padding="10" Margin="5">
+                                    <StackPanel Orientation="Vertical" MouseDown="Movie_Click">
+                                        <Image Source="{Binding ImageURL}" Height="100" Width="75"/>
+                                        <TextBlock Text="{Binding Title}" FontWeight="Bold" TextAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
                 </StackPanel>
             </Border>
         </Grid>

@@ -35,7 +35,7 @@ namespace ProyectoFinal
             using (var conn = new NpgsqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT title, imageurl FROM movies";
+                string query = "SELECT MovieID::int, Title, Description, ImageURL FROM movies";
                 using (var cmd = new NpgsqlCommand(query, conn))
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -43,8 +43,10 @@ namespace ProyectoFinal
                     {
                         var movie = new Movie
                         {
-                            Title = reader["title"] as string ?? "Untitled", // Fallback to 'Untitled' if null
-                            ImageURL = reader["imageurl"] as string
+                            MovieID = reader.GetInt32(0),
+                            Title = reader.GetString(1),
+                            Description = reader.GetString(2),
+                            ImageURL = reader.GetString(3)
                         };
                         Movies.Add(movie);
                         FilteredMovies.Add(movie); // Initialize FilteredMovies with all movies
@@ -61,7 +63,9 @@ namespace ProyectoFinal
         {
             if (sender is StackPanel panel && panel.DataContext is Movie movie)
             {
-                MessageBox.Show($"You selected: {movie.Title}");
+                var detailsWindow = new MovieDetailsWindow(movie);
+                detailsWindow.Show();
+                this.Close();
             }
         }
 
@@ -111,7 +115,9 @@ namespace ProyectoFinal
 
     public class Movie
     {
+        public int MovieID { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
         public string ImageURL { get; set; }
     }
 }

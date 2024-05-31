@@ -3,12 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\moviedetailswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\moviedetailswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\seatselectionwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\seatselectionwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\seatselectionwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\seatselectionwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\moviedetailswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\moviedetailswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,7 +58,69 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\App.xaml",
+              "RelativeDocumentMoniker": "ProyectoFinal\\App.xaml",
+              "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\App.xaml",
+              "RelativeToolTip": "ProyectoFinal\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-31T05:14:38.567Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SeatSelectionWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\SeatSelectionWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ProyectoFinal\\SeatSelectionWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\SeatSelectionWindow.xaml.cs",
+              "RelativeToolTip": "ProyectoFinal\\SeatSelectionWindow.xaml.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAwwJYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T05:08:16.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SeatSelectionWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\SeatSelectionWindow.xaml",
+              "RelativeDocumentMoniker": "ProyectoFinal\\SeatSelectionWindow.xaml",
+              "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\SeatSelectionWindow.xaml",
+              "RelativeToolTip": "ProyectoFinal\\SeatSelectionWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-31T05:08:11.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MovieDetailsWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\MovieDetailsWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ProyectoFinal\\MovieDetailsWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\MovieDetailsWindow.xaml.cs",
+              "RelativeToolTip": "ProyectoFinal\\MovieDetailsWindow.xaml.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAIwE4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T03:47:07.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MovieDetailsWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\MovieDetailsWindow.xaml",
+              "RelativeDocumentMoniker": "ProyectoFinal\\MovieDetailsWindow.xaml",
+              "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\MovieDetailsWindow.xaml",
+              "RelativeToolTip": "ProyectoFinal\\MovieDetailsWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-31T03:47:01.171Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\MainWindow.xaml",
               "RelativeDocumentMoniker": "ProyectoFinal\\MainWindow.xaml",
@@ -50,15 +132,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "ProyectoFinal\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\MainWindow.xaml.cs",
               "RelativeToolTip": "ProyectoFinal\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAFUAAAAAAAAAAAAqwHQAAAABAAAA",
+              "ViewState": "AQIAADUAAAAAAAAAAAAowEEAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T03:46:14.499Z"
+              "WhenOpened": "2024-05-30T03:46:14.499Z",
+              "EditorCaption": ""
             }
           ]
         }

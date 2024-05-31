@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:ProyectoFinal"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <local:BooleanToBrushConverter x:Key="BooleanToBrushConverter"/>
     </Application.Resources>
 </Application>
