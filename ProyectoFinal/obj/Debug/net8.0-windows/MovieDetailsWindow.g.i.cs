@@ -52,7 +52,7 @@ namespace ProyectoFinal {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ProyectoFinal;component/moviedetailswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ProyectoFinal;V1.0.0.0;component/moviedetailswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\MovieDetailsWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

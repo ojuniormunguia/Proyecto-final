@@ -52,7 +52,7 @@ namespace ProyectoFinal {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ProyectoFinal;component/seatselectionwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ProyectoFinal;V1.0.0.0;component/seatselectionwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\SeatSelectionWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

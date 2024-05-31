@@ -65,7 +65,47 @@
               "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\MainWindow.xaml",
               "RelativeToolTip": "ProyectoFinal\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+<<<<<<< Updated upstream
               "WhenOpened": "2024-05-30T03:46:18.699Z"
+=======
+              "WhenOpened": "2024-05-31T05:14:38.567Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SeatSelectionWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\SeatSelectionWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ProyectoFinal\\SeatSelectionWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\SeatSelectionWindow.xaml.cs",
+              "RelativeToolTip": "ProyectoFinal\\SeatSelectionWindow.xaml.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAwwJYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T05:08:16.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SeatSelectionWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\SeatSelectionWindow.xaml",
+              "RelativeDocumentMoniker": "ProyectoFinal\\SeatSelectionWindow.xaml",
+              "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\SeatSelectionWindow.xaml",
+              "RelativeToolTip": "ProyectoFinal\\SeatSelectionWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-31T05:08:11.837Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MovieDetailsWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\MovieDetailsWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ProyectoFinal\\MovieDetailsWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\MovieDetailsWindow.xaml.cs",
+              "RelativeToolTip": "ProyectoFinal\\MovieDetailsWindow.xaml.cs",
+              "ViewState": "AQIAAD0AAAAAAAAAAAA2wE4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T03:47:07.442Z",
+              "EditorCaption": ""
+>>>>>>> Stashed changes
             },
             {
               "$type": "Document",
@@ -87,6 +127,7 @@
               "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\SeatSelectionWindow.xaml",
               "RelativeToolTip": "ProyectoFinal\\SeatSelectionWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+<<<<<<< Updated upstream
               "WhenOpened": "2024-05-31T05:08:11.837Z"
             },
             {
@@ -101,6 +142,9 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-31T03:47:07.442Z",
               "EditorCaption": ""
+=======
+              "WhenOpened": "2024-05-30T03:46:18.699Z"
+>>>>>>> Stashed changes
             },
             {
               "$type": "Document",
@@ -113,6 +157,7 @@
               "ViewState": "AQIAAFkAAAAAAAAAAAAAwHEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-30T03:46:14.499Z"
+<<<<<<< Updated upstream
             },
             {
               "$type": "Document",
@@ -136,6 +181,8 @@
               "RelativeToolTip": "ProyectoFinal\\App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-05-31T05:14:38.567Z"
+=======
+>>>>>>> Stashed changes
             }
           ]
         }
