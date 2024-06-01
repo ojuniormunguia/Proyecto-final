@@ -2,36 +2,44 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Resumen de Reservas" Height="600" Width="800">
-    <Grid Margin="20">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Resumen de Reservas" FontSize="24" FontWeight="Bold" Margin="10" Grid.Row="0" HorizontalAlignment="Center"/>
+        <TextBlock Text="Resumen de Reserva" FontSize="24" FontWeight="Bold" Margin="10" Grid.Row="0"/>
 
-        <ScrollViewer Grid.Row="1">
-            <ItemsControl ItemsSource="{Binding SelectedSeats}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="Gray" BorderThickness="1" Margin="10" Padding="10">
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="{Binding QRCodeImage}" Width="100" Height="100" Margin="10"/>
-                                <StackPanel>
-                                    <TextBlock Text="{Binding Title}" FontSize="20" FontWeight="Bold"/>
-                                    <TextBlock Text="SALA A" FontSize="16"/>
-                                    <TextBlock Text="2D DUB" FontSize="16"/>
-                                    <TextBlock Text="4 de octubre 2024 22:00" FontSize="16"/>
-                                    <TextBlock Text="{Binding SeatNumber, StringFormat='Asiento número: {0}' }" FontSize="16"/>
-                                </StackPanel>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Lista de Asientos Reservados -->
+            <StackPanel Grid.Column="0" Margin="10">
+                <ItemsControl ItemsSource="{Binding SelectedSeats}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" Margin="5">
+                                <TextBlock Text="{Binding SeatNumber}" FontWeight="Bold"/>
+                                <Image Source="{Binding QRCodeImage}" Width="100" Height="100"/>
                             </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
 
-        <Button Content="Regresar al menú inicial" Command="{Binding ReturnToMainMenuCommand}" Width="200" Height="50" Background="Red" Foreground="White" HorizontalAlignment="Center" Grid.Row="2" Margin="20"/>
+            <!-- Detalles de la Película -->
+            <StackPanel Grid.Column="1" Margin="10">
+                <TextBlock Text="Detalles de la Película" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                <TextBlock Text="{Binding SelectedMovie.Title}" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Text="Sala: A"/>
+                <TextBlock Text="Formato: 2D DUB"/>
+                <TextBlock Text="Fecha: 4 de octubre 2024"/>
+                <TextBlock Text="Hora: 22:00"/>
+                <Button Content="Volver al Menú Principal" Command="{Binding ReturnToMainMenuCommand}" Width="200" Height="50" Background="Red" Foreground="White"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

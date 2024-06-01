@@ -90,3 +90,8 @@ D:\Fernando\Documents\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\ref\
 D:\Fernando\Documents\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\SummaryWindow.baml
 D:\Fernando\Documents\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\SummaryWindow.g.cs
 D:\Fernando\Documents\Proyecto-final\ProyectoFinal\bin\Debug\net8.0-windows\QRCoder.dll
+C:\Users\theoj\OneDrive\Documentos\ProyectoFinal\Proyecto-final\ProyectoFinal\bin\Debug\net8.0-windows\QRCoder.dll
+C:\Users\theoj\OneDrive\Documentos\ProyectoFinal\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\SummaryWindow.baml
+C:\Users\theoj\OneDrive\Documentos\ProyectoFinal\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\ClientManagementWindow.g.cs
+C:\Users\theoj\OneDrive\Documentos\ProyectoFinal\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\SummaryWindow.g.cs
+C:\Users\theoj\OneDrive\Documentos\ProyectoFinal\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\ClientManagementWindow.baml

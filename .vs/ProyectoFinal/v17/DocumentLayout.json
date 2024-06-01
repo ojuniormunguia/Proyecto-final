@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\clientmanagementwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\clientmanagementwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\seatselectionwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\seatselectionwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\clientmanagementwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\clientmanagementwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
@@ -14,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,14 +42,40 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SeatSelectionWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\SeatSelectionWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ProyectoFinal\\SeatSelectionWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\SeatSelectionWindow.xaml.cs",
+              "RelativeToolTip": "ProyectoFinal\\SeatSelectionWindow.xaml.cs",
+              "ViewState": "AQIAAMcAAAAAAAAAAAAqwMQAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-01T20:34:23.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ClientManagementWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\ClientManagementWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ProyectoFinal\\ClientManagementWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\ClientManagementWindow.xaml.cs",
+              "RelativeToolTip": "ProyectoFinal\\ClientManagementWindow.xaml.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAwBkAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-01T17:16:34.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ClientManagementWindow.xaml",
               "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\ClientManagementWindow.xaml",
               "RelativeDocumentMoniker": "ProyectoFinal\\ClientManagementWindow.xaml",
               "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\ClientManagementWindow.xaml",
               "RelativeToolTip": "ProyectoFinal\\ClientManagementWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-06-01T17:03:16.029Z",
+              "WhenOpened": "2024-06-01T17:14:27.314Z",
               "EditorCaption": ""
             }
           ]

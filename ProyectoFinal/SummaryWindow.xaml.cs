@@ -21,31 +21,28 @@ using System.Windows.Shapes;
 
 namespace ProyectoFinal
 {
-    /// <summary>
-    /// Lógica de interacción para SummaryWindow.xaml
-    /// </summary>
     public partial class SummaryWindow : Window
     {
-            public Movie SelectedMovie { get; set; }
-            public List<Seat> SelectedSeats { get; set; }
-            public string QRCodeString { get; set; }
-            public ICommand ReturnToMainMenuCommand { get; }
+        public Movie SelectedMovie { get; set; }
+        public List<Seat> SelectedSeats { get; set; }
+        public string QRCodeString { get; set; }
+        public ICommand ReturnToMainMenuCommand { get; }
 
-            public SummaryWindow(Movie selectedMovie, List<Seat> selectedSeats, string qrCodeString)
+        public SummaryWindow(Movie selectedMovie, List<Seat> selectedSeats, string qrCodeString)
+        {
+            InitializeComponent();
+            SelectedMovie = selectedMovie;
+            SelectedSeats = selectedSeats;
+            QRCodeString = qrCodeString;
+            ReturnToMainMenuCommand = new RelayCommand(ReturnToMainMenu);
+
+            foreach (var seat in SelectedSeats)
             {
-                InitializeComponent();
-                SelectedMovie = selectedMovie;
-                SelectedSeats = selectedSeats;
-                QRCodeString = qrCodeString;
-                ReturnToMainMenuCommand = new RelayCommand(ReturnToMainMenu);
-
-                foreach (var seat in SelectedSeats)
-                {
                 seat.QRCodeImage = GenerateQRCodeImage($"Pelicula: {SelectedMovie.Title}\nSala: A\nFormato: 2D DUB\nFecha: 4 de octubre 2024\nHora: 22:00\nAsiento numero: {seat.SeatNumber}");
             }
 
-                DataContext = this;
-            }
+            DataContext = this;
+        }
 
         private BitmapImage GenerateQRCodeImage(string qrText)
         {
@@ -66,10 +63,10 @@ namespace ProyectoFinal
         }
 
         private void ReturnToMainMenu(object parameter)
-            {
-                var mainWindow = new MainWindow();
-                mainWindow.Show();
-                this.Close();
-            }
+        {
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
+}

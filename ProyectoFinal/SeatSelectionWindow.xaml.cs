@@ -1,23 +1,10 @@
 ﻿using Npgsql;
-using QRCoder;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ProyectoFinal
 {
@@ -29,6 +16,7 @@ namespace ProyectoFinal
         public ObservableCollection<Seat> Seats { get; set; }
         public ICommand ToggleSeatCommand { get; }
         public ICommand ReservarCommand { get; }
+        public ICommand ContinueCommand { get; }
 
         private string _selectedSeatIDs;
         public string SelectedSeatIDs
@@ -41,37 +29,6 @@ namespace ProyectoFinal
             }
         }
 
-        private BitmapImage GenerateQRCodeImage(string qrText)
-        {
-            using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
-            {
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q);
-                using (QRCode qrCode = new QRCode(qrCodeData))
-                {
-                    using (Bitmap qrCodeBitmap = qrCode.GetGraphic(20))
-                    {
-                        using (MemoryStream memoryStream = new MemoryStream())
-                        {
-                            qrCodeBitmap.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
-                            memoryStream.Position = 0;
-
-                            BitmapImage qrCodeImage = new BitmapImage();
-                            qrCodeImage.BeginInit();
-                            qrCodeImage.StreamSource = memoryStream;
-                            qrCodeImage.CacheOption = BitmapCacheOption.OnLoad;
-                            qrCodeImage.EndInit();
-
-                            return qrCodeImage;
-                        }
-                    }
-                }
-            }
-        }
-
-        private string GenerateQRCodeString()
-        {
-            return Guid.NewGuid().ToString("N").Substring(0, 32);
-        }
         public SeatSelectionWindow(int movieID, int scheduleID, Movie selectedMovie)
         {
             InitializeComponent();
@@ -81,6 +38,7 @@ namespace ProyectoFinal
             Seats = new ObservableCollection<Seat>();
             ToggleSeatCommand = new RelayCommand(ToggleSeat);
             ReservarCommand = new RelayCommand(Reservar);
+            ContinueCommand = new RelayCommand(OpenClientManagementWindow);
             DataContext = this;
             GenerateSeats();
             LoadSeatsFromDatabase();
@@ -166,16 +124,18 @@ namespace ProyectoFinal
                             cmd.Parameters.AddWithValue("IsAvailable", false);
                             cmd.ExecuteNonQuery();
                         }
-                        // Generar código QR
-                        seat.QRCodeImage = GenerateQRCodeImage(seat.SeatNumber.ToString());
                     }
                     transaction.Commit();
                 }
             }
+            MessageBox.Show("¡Los asientos han sido reservados con éxito!");
+            OpenClientManagementWindow(null);
+        }
 
-            // Mostrar la ventana de resumen
-            var summaryWindow = new SummaryWindow(SelectedMovie, Seats.Where(s => s.IsSelected).ToList(), GenerateQRCodeString());
-            summaryWindow.Show();
+        private void OpenClientManagementWindow(object parameter)
+        {
+            var clientManagementWindow = new ClientManagementWindow();
+            clientManagementWindow.Show();
             this.Close();
         }
 
@@ -229,6 +189,7 @@ namespace ProyectoFinal
             {
                 _isSelected = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(IsAvailable)); // Notify that IsAvailable has changed too
             }
         }
 
@@ -247,34 +208,6 @@ namespace ProyectoFinal
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-    }
-
-    public class RelayCommand : ICommand
-    {
-        private readonly Action<object> _execute;
-        private readonly Func<object, bool> _canExecute;
-
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
-        {
-            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
-            _canExecute = canExecute;
-        }
-
-        public bool CanExecute(object parameter)
-        {
-            return _canExecute == null || _canExecute(parameter);
-        }
-
-        public void Execute(object parameter)
-        {
-            _execute(parameter);
-        }
-
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
         }
     }
 }
