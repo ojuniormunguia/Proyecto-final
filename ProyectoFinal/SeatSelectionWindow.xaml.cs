@@ -27,6 +27,17 @@ namespace ProyectoFinal
         public ICommand ToggleSeatCommand { get; }
         public ICommand ReservarCommand { get; }
 
+        private string _selectedSeatIDs;
+        public string SelectedSeatIDs
+        {
+            get => _selectedSeatIDs;
+            set
+            {
+                _selectedSeatIDs = value;
+                OnPropertyChanged();
+            }
+        }
+
         public SeatSelectionWindow(int movieID, int scheduleID, Movie selectedMovie)
         {
             InitializeComponent();
@@ -37,7 +48,21 @@ namespace ProyectoFinal
             ToggleSeatCommand = new RelayCommand(ToggleSeat);
             ReservarCommand = new RelayCommand(Reservar);
             DataContext = this;
+            GenerateSeats();
             LoadSeatsFromDatabase();
+        }
+
+        private void GenerateSeats()
+        {
+            for (int i = 1; i <= 93; i++)
+            {
+                Seats.Add(new Seat
+                {
+                    SeatNumber = i,
+                    IsAvailable = true,
+                    IsSelected = false
+                });
+            }
         }
 
         private void LoadSeatsFromDatabase()
@@ -46,7 +71,7 @@ namespace ProyectoFinal
             using (var conn = new NpgsqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT SeatID, SeatNumber, IsAvailable FROM seats WHERE ScheduleID = @ScheduleID";
+                string query = "SELECT SeatNumber, IsAvailable FROM seats WHERE ScheduleID = @ScheduleID";
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("ScheduleID", ScheduleID);
@@ -54,31 +79,23 @@ namespace ProyectoFinal
                     {
                         while (reader.Read())
                         {
-                            Seats.Add(new Seat
+                            int seatNumber = reader.GetInt32(0);
+                            bool isAvailable = reader.GetBoolean(1);
+
+                            var seat = Seats.FirstOrDefault(s => s.SeatNumber == seatNumber);
+                            if (seat != null)
                             {
-                                SeatID = reader.GetInt32(0),
-                                SeatNumber = reader.GetInt32(1),
-                                IsAvailable = reader.GetBoolean(2),
-                                IsSelected = false
-                            });
+                                seat.IsAvailable = isAvailable;
+                                seat.IsSelected = !isAvailable;
+                            }
                         }
                     }
                 }
             }
 
-            // Agregar asientos restantes si no todos los 93 asientos están en la base de datos
-            for (int i = 1; i <= 93; i++)
-            {
-                if (Seats.All(s => s.SeatNumber != i))
-                {
-                    Seats.Add(new Seat
-                    {
-                        SeatNumber = i,
-                        IsAvailable = true,
-                        IsSelected = false
-                    });
-                }
-            }
+            // Asegurar que los asientos estén ordenados por SeatNumber
+            Seats = new ObservableCollection<Seat>(Seats.OrderBy(s => s.SeatNumber));
+            UpdateSelectedSeatIDs(); // Initialize the selected seats
         }
 
         private void ToggleSeat(object parameter)
@@ -86,7 +103,15 @@ namespace ProyectoFinal
             if (parameter is Seat seat)
             {
                 seat.IsSelected = !seat.IsSelected;
+                seat.IsAvailable = !seat.IsSelected; // Update IsAvailable based on IsSelected
+                UpdateSelectedSeatIDs();
             }
+        }
+
+        private void UpdateSelectedSeatIDs()
+        {
+            SelectedSeatIDs = string.Join(", ", Seats.Where(s => s.IsSelected).Select(s => s.SeatNumber));
+            Console.WriteLine($"Selected Seats: {SelectedSeatIDs}"); // Debugging output
         }
 
         private void Reservar(object parameter)
@@ -99,10 +124,11 @@ namespace ProyectoFinal
                 {
                     foreach (var seat in Seats.Where(s => s.IsSelected))
                     {
-                        string query = "UPDATE seats SET IsAvailable = @IsAvailable WHERE SeatID = @SeatID";
+                        string query = "INSERT INTO seats (ScheduleID, SeatNumber, IsAvailable) VALUES (@ScheduleID, @SeatNumber, @IsAvailable)";
                         using (var cmd = new NpgsqlCommand(query, conn))
                         {
-                            cmd.Parameters.AddWithValue("SeatID", seat.SeatID);
+                            cmd.Parameters.AddWithValue("ScheduleID", ScheduleID);
+                            cmd.Parameters.AddWithValue("SeatNumber", seat.SeatNumber);
                             cmd.Parameters.AddWithValue("IsAvailable", false);
                             cmd.ExecuteNonQuery();
                         }
@@ -164,6 +190,7 @@ namespace ProyectoFinal
             {
                 _isSelected = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(IsAvailable)); // Notify that IsAvailable has changed too
             }
         }
 

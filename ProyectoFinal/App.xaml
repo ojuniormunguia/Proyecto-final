@@ -5,5 +5,6 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <local:BooleanToBrushConverter x:Key="BooleanToBrushConverter"/>
+        <local:BoolToColorConverter x:Key="BoolToColorConverter"/>
     </Application.Resources>
 </Application>

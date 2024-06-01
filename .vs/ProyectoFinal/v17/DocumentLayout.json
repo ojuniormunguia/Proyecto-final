@@ -7,16 +7,20 @@
       "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\seatselectionwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\seatselectionwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\seatselectionwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\booltocolorconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\booltocolorconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\moviedetailswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\moviedetailswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\moviedetailswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\moviedetailswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\theoj\\onedrive\\documentos\\proyectofinal\\proyecto-final\\proyectofinal\\seatselectionwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{261D7543-5BA0-4B1D-B2D3-10933DC64C7B}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\seatselectionwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,7 +50,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "BoolToColorConverter.cs",
+              "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\BoolToColorConverter.cs",
+              "RelativeDocumentMoniker": "ProyectoFinal\\BoolToColorConverter.cs",
+              "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\BoolToColorConverter.cs",
+              "RelativeToolTip": "ProyectoFinal\\BoolToColorConverter.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-01T00:13:58.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "SeatSelectionWindow.xaml",
               "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\SeatSelectionWindow.xaml",
               "RelativeDocumentMoniker": "ProyectoFinal\\SeatSelectionWindow.xaml",
@@ -64,14 +81,14 @@
               "RelativeDocumentMoniker": "ProyectoFinal\\SeatSelectionWindow.xaml.cs",
               "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\SeatSelectionWindow.xaml.cs",
               "RelativeToolTip": "ProyectoFinal\\SeatSelectionWindow.xaml.cs",
-              "ViewState": "AQIAALAAAAAAAAAAAAAUwMsAAAABAAAA",
+              "ViewState": "AQIAAL8AAAAAAAAAAAAwwOYAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-31T23:35:18.799Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "MovieDetailsWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\MovieDetailsWindow.xaml.cs",
               "RelativeDocumentMoniker": "ProyectoFinal\\MovieDetailsWindow.xaml.cs",
@@ -79,20 +96,18 @@
               "RelativeToolTip": "ProyectoFinal\\MovieDetailsWindow.xaml.cs",
               "ViewState": "AQIAACIAAAAAAAAAAAAwwIMAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-31T23:19:58.74Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-31T23:19:58.74Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "MovieDetailsWindow.xaml",
               "DocumentMoniker": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\MovieDetailsWindow.xaml",
               "RelativeDocumentMoniker": "ProyectoFinal\\MovieDetailsWindow.xaml",
               "ToolTip": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\MovieDetailsWindow.xaml",
               "RelativeToolTip": "ProyectoFinal\\MovieDetailsWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-31T23:19:55.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-31T23:19:55.525Z"
             }
           ]
         }
