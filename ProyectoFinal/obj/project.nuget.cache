@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "lh2vU1yegJIkysIIUwpE+zxlkfHYDywQPhHqww66dgIeigUi9NSqt6PZq4KUYNtY2UF+xPz+ZLZnK2wgMBT4EA==",
+  "dgSpecHash": "sEbATm9RXXalHK9fCRObLxYcM3hoEIYutHGwbWIRa7wJRnR5RF+CEx1t5PBYig0UIouqaVDmOJoksQNnbcbA2Q==",
   "success": true,
-  "projectFilePath": "D:\\Fernando\\Documents\\Proyecto-final\\ProyectoFinal\\ProyectoFinal.csproj",
+  "projectFilePath": "C:\\Users\\theoj\\OneDrive\\Documentos\\ProyectoFinal\\Proyecto-final\\ProyectoFinal\\ProyectoFinal.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Fernando\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\Fernando\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
-    "C:\\Users\\Fernando\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
-    "C:\\Users\\Fernando\\.nuget\\packages\\npgsql\\8.0.3\\npgsql.8.0.3.nupkg.sha512",
-    "C:\\Users\\Fernando\\.nuget\\packages\\qrcoder\\1.5.1\\qrcoder.1.5.1.nupkg.sha512",
-    "C:\\Users\\Fernando\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512"
+    "C:\\Users\\theoj\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\theoj\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\theoj\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\theoj\\.nuget\\packages\\npgsql\\8.0.3\\npgsql.8.0.3.nupkg.sha512",
+    "C:\\Users\\theoj\\.nuget\\packages\\qrcoder\\1.5.1\\qrcoder.1.5.1.nupkg.sha512",
+    "C:\\Users\\theoj\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }
