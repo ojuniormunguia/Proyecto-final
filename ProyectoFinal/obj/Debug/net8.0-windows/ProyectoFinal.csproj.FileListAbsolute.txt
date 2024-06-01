@@ -87,3 +87,6 @@ D:\Fernando\Documents\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\refi
 D:\Fernando\Documents\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\ProyectoFinal.pdb
 D:\Fernando\Documents\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\ProyectoFinal.genruntimeconfig.cache
 D:\Fernando\Documents\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\ref\ProyectoFinal.dll
+D:\Fernando\Documents\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\SummaryWindow.baml
+D:\Fernando\Documents\Proyecto-final\ProyectoFinal\obj\Debug\net8.0-windows\SummaryWindow.g.cs
+D:\Fernando\Documents\Proyecto-final\ProyectoFinal\bin\Debug\net8.0-windows\QRCoder.dll
