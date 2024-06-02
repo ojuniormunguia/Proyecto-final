@@ -63,7 +63,7 @@ namespace ProyectoFinal
             using (var conn = new NpgsqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT SeatNumber, IsAvailable FROM seats WHERE ScheduleID = @ScheduleID";
+                string query = "SELECT SeatID, SeatNumber, IsAvailable FROM seats WHERE ScheduleID = @ScheduleID";
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("ScheduleID", ScheduleID);
@@ -71,12 +71,14 @@ namespace ProyectoFinal
                     {
                         while (reader.Read())
                         {
-                            int seatNumber = reader.GetInt32(0);
-                            bool isAvailable = reader.GetBoolean(1);
+                            int seatID = reader.GetInt32(0);
+                            int seatNumber = reader.GetInt32(1);
+                            bool isAvailable = reader.GetBoolean(2);
 
                             var seat = Seats.FirstOrDefault(s => s.SeatNumber == seatNumber);
                             if (seat != null)
                             {
+                                seat.SeatID = seatID;
                                 seat.IsAvailable = isAvailable;
                                 seat.IsSelected = !isAvailable;
                             }
@@ -116,25 +118,49 @@ namespace ProyectoFinal
                 {
                     foreach (var seat in Seats.Where(s => s.IsSelected))
                     {
-                        string query = "INSERT INTO seats (ScheduleID, SeatNumber, IsAvailable) VALUES (@ScheduleID, @SeatNumber, @IsAvailable)";
-                        using (var cmd = new NpgsqlCommand(query, conn))
+                        // First, try to update the seat if it exists
+                        string updateSeatQuery = @"
+                        UPDATE seats
+                        SET IsAvailable = false
+                        WHERE ScheduleID = @ScheduleID AND SeatNumber = @SeatNumber;
+                        ";
+
+                        using (var cmd = new NpgsqlCommand(updateSeatQuery, conn))
                         {
                             cmd.Parameters.AddWithValue("ScheduleID", ScheduleID);
                             cmd.Parameters.AddWithValue("SeatNumber", seat.SeatNumber);
-                            cmd.Parameters.AddWithValue("IsAvailable", false);
-                            cmd.ExecuteNonQuery();
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            // If no rows were updated, insert a new seat
+                            if (rowsAffected == 0)
+                            {
+                                string insertSeatQuery = @"
+                                INSERT INTO seats (ScheduleID, SeatNumber, IsAvailable)
+                                VALUES (@ScheduleID, @SeatNumber, false)
+                                RETURNING SeatID;
+                                ";
+
+                                using (var insertCmd = new NpgsqlCommand(insertSeatQuery, conn))
+                                {
+                                    insertCmd.Parameters.AddWithValue("ScheduleID", ScheduleID);
+                                    insertCmd.Parameters.AddWithValue("SeatNumber", seat.SeatNumber);
+                                    seat.SeatID = (int)insertCmd.ExecuteScalar();
+                                }
+                            }
                         }
                     }
                     transaction.Commit();
                 }
             }
+
             MessageBox.Show("¡Los asientos han sido reservados con éxito!");
             OpenClientManagementWindow(null);
         }
 
         private void OpenClientManagementWindow(object parameter)
         {
-            var clientManagementWindow = new ClientManagementWindow();
+            var selectedSeats = Seats.Where(s => s.IsSelected).ToList();
+            var clientManagementWindow = new ClientManagementWindow(ScheduleID, selectedSeats, SelectedMovie);
             clientManagementWindow.Show();
             this.Close();
         }

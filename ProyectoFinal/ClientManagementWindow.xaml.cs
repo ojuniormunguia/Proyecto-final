@@ -1,8 +1,10 @@
 ﻿using Npgsql;
+using QRCoder;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -25,13 +27,22 @@ namespace ProyectoFinal
         public Client NewClient { get; set; }
         public bool IsPremium { get; set; }
         public ICommand AddClientCommand { get; }
+        public ICommand ContinueCommand { get; }
 
-        public ClientManagementWindow()
+        private int ScheduleID { get; set; }
+        private List<Seat> SelectedSeats { get; set; }
+        private Movie SelectedMovie { get; set; }
+
+        public ClientManagementWindow(int scheduleID, List<Seat> selectedSeats, Movie selectedMovie)
         {
             InitializeComponent();
+            ScheduleID = scheduleID;
+            SelectedSeats = selectedSeats;
+            SelectedMovie = selectedMovie;
             Clients = new ObservableCollection<Client>();
             NewClient = new Client();
             AddClientCommand = new RelayCommand(AddClient);
+            ContinueCommand = new RelayCommand(Continue);
             DataContext = this;
             LoadClientsFromDatabase();
         }
@@ -112,6 +123,71 @@ namespace ProyectoFinal
             OnPropertyChanged(nameof(IsPremium));
 
             MessageBox.Show("Cliente agregado correctamente. Ahora puede seleccionar el cliente para continuar.");
+        }
+
+        private void Continue(object parameter)
+        {
+            if (SelectedClient == null)
+            {
+                MessageBox.Show("Por favor, seleccione un cliente para continuar.");
+                return;
+            }
+
+            string connectionString = "Host=hansken.db.elephantsql.com;Username=fvlwmckt;Password=Axo0Bex988-66RWSC_tnApCZrm7hn7k3;Database=fvlwmckt";
+            List<TicketInfo> newTickets = new List<TicketInfo>();
+
+            using (var conn = new NpgsqlConnection(connectionString))
+            {
+                conn.Open();
+                using (var transaction = conn.BeginTransaction())
+                {
+                    foreach (var seat in SelectedSeats)
+                    {
+                        string ticketCode = Guid.NewGuid().ToString();
+                        string query = "INSERT INTO Tickets (ClientID, ScheduleID, SeatID, TicketCode) VALUES (@ClientID, @ScheduleID, @SeatID, @TicketCode)";
+                        using (var cmd = new NpgsqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("ClientID", SelectedClient.ClientID);
+                            cmd.Parameters.AddWithValue("ScheduleID", ScheduleID);
+                            cmd.Parameters.AddWithValue("SeatID", seat.SeatID);
+                            cmd.Parameters.AddWithValue("TicketCode", ticketCode);
+                            cmd.ExecuteNonQuery();
+
+                            newTickets.Add(new TicketInfo
+                            {
+                                ClientName = SelectedClient.Name,
+                                ScheduleTime = "4 de octubre 2024 22:00",
+                                SeatNumber = seat.SeatNumber.ToString(),
+                                TicketCode = ticketCode,
+                                QRCodeImage = GenerateQRCodeImage(ticketCode)
+                            });
+                        }
+                    }
+                    transaction.Commit();
+                }
+            }
+
+            var summaryWindow = new SummaryWindow(SelectedMovie, newTickets);
+            summaryWindow.Show();
+            this.Close();
+        }
+
+        private BitmapImage GenerateQRCodeImage(string qrText)
+        {
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q);
+            PngByteQRCode qrCode = new PngByteQRCode(qrCodeData);
+            byte[] qrCodeImage = qrCode.GetGraphic(20, new byte[] { 0, 0, 0 }, new byte[] { 255, 255, 255 }, true);
+
+            using (var ms = new MemoryStream(qrCodeImage))
+            {
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = ms;
+                image.EndInit();
+                return image;
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

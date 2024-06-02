@@ -6,8 +6,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <!-- Nueva fila para la pantalla -->
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <!-- Nueva fila para la etiqueta -->
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
