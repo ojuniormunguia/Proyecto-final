@@ -26,13 +26,15 @@ namespace ProyectoFinal
     {
         public Movie SelectedMovie { get; set; }
         public List<TicketInfo> Tickets { get; set; }
+        public User LoggedInUser { get; set; }
         public ICommand ReturnToMainMenuCommand { get; }
 
-        public SummaryWindow(Movie selectedMovie, List<TicketInfo> tickets)
+        public SummaryWindow(Movie selectedMovie, List<TicketInfo> tickets, User loggedInUser)
         {
             InitializeComponent();
             SelectedMovie = selectedMovie;
             Tickets = tickets;
+            LoggedInUser = loggedInUser;
             ReturnToMainMenuCommand = new RelayCommand(ReturnToMainMenu);
 
             DataContext = this;
@@ -40,7 +42,7 @@ namespace ProyectoFinal
 
         private void ReturnToMainMenu(object parameter)
         {
-            var mainWindow = new MainWindow();
+            var mainWindow = new MainWindow(LoggedInUser);
             mainWindow.Show();
             this.Close();
         }

@@ -10,6 +10,9 @@
     <Compile Update="ClientManagementWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="LoginWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MovieDetailsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,9 +22,15 @@
     <Compile Update="SummaryWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserManagementWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="ClientManagementWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
@@ -34,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SummaryWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserManagementWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

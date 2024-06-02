@@ -34,11 +34,13 @@ namespace ProyectoFinal
         public ICommand SelectScheduleCommand { get; }
 
         public Movie SelectedMovie { get; set; }
+        private User LoggedInUser { get; set; } // Add this line
 
-        public MovieDetailsWindow(Movie movie)
+        public MovieDetailsWindow(Movie movie, User loggedInUser) // Add loggedInUser parameter
         {
             InitializeComponent();
             SelectedMovie = movie;
+            LoggedInUser = loggedInUser; // Initialize LoggedInUser
             DataContext = this;
             Schedules = new ObservableCollection<Schedule>();
             SelectScheduleCommand = new RelayCommand(SelectSchedule);
@@ -75,7 +77,7 @@ namespace ProyectoFinal
         {
             if (parameter is Schedule schedule)
             {
-                var seatSelectionWindow = new SeatSelectionWindow(schedule.MovieID, schedule.ScheduleID, SelectedMovie);
+                var seatSelectionWindow = new SeatSelectionWindow(schedule.MovieID, schedule.ScheduleID, SelectedMovie, LoggedInUser); // Pass loggedInUser
                 seatSelectionWindow.Show();
                 this.Close();
             }
@@ -128,5 +130,7 @@ namespace ProyectoFinal
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
     }
+
 }

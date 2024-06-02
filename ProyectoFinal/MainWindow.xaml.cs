@@ -50,13 +50,46 @@ namespace ProyectoFinal
             }
         }
 
-        public MainWindow()
+        private User _currentUser;
+        public User CurrentUser
+        {
+            get => _currentUser;
+            set
+            {
+                _currentUser = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ICommand OpenUserManagementCommand { get; }
+        public ICommand LogoutCommand { get; }
+
+        public MainWindow(User loggedInUser)
         {
             InitializeComponent();
+            LoggedInUser = loggedInUser;
             Movies = new ObservableCollection<Movie>();
             FilteredMovies = new ObservableCollection<Movie>();
             DataContext = this;
             LoadMoviesFromDatabase();
+            CheckAdminPermissions();
+
+            OpenUserManagementCommand = new RelayCommand(OpenUserManagement);
+            LogoutCommand = new RelayCommand(Logout);
+        }
+
+        public User LoggedInUser { get; set; }
+
+        private void CheckAdminPermissions()
+        {
+            if (LoggedInUser.Permissions == "Administrador")
+            {
+                AdminButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                AdminButton.Visibility = Visibility.Collapsed;
+            }
         }
 
         private async void LoadMoviesFromDatabase()
@@ -100,7 +133,7 @@ namespace ProyectoFinal
         {
             if (sender is StackPanel panel && panel.DataContext is Movie movie)
             {
-                var detailsWindow = new MovieDetailsWindow(movie);
+                var detailsWindow = new MovieDetailsWindow(movie, LoggedInUser); // Pass loggedInUser
                 detailsWindow.Show();
                 this.Close();
             }
@@ -147,6 +180,30 @@ namespace ProyectoFinal
                 textBox.Text = "Search Movies...";
                 textBox.Foreground = System.Windows.Media.Brushes.Gray;
             }
+        }
+
+        private void OpenUserManagement(object parameter)
+        {
+            var userManagementWindow = new UserManagementWindow(LoggedInUser);
+            userManagementWindow.Show();
+            this.Close();
+        }
+
+        private void Logout(object parameter)
+        {
+            var loginWindow = new LoginWindow();
+            loginWindow.Show();
+            this.Close();
+        }
+
+        private void AdminButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenUserManagement(null);
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            Logout(null);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

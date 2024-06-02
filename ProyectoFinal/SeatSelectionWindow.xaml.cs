@@ -18,6 +18,8 @@ namespace ProyectoFinal
         public ICommand ReservarCommand { get; }
         public ICommand ContinueCommand { get; }
 
+        private User LoggedInUser { get; set; } // Add this line
+
         private string _selectedSeatIDs;
         public string SelectedSeatIDs
         {
@@ -29,12 +31,13 @@ namespace ProyectoFinal
             }
         }
 
-        public SeatSelectionWindow(int movieID, int scheduleID, Movie selectedMovie)
+        public SeatSelectionWindow(int movieID, int scheduleID, Movie selectedMovie, User loggedInUser) // Add loggedInUser parameter
         {
             InitializeComponent();
             MovieID = movieID;
             ScheduleID = scheduleID;
             SelectedMovie = selectedMovie ?? throw new ArgumentNullException(nameof(selectedMovie));
+            LoggedInUser = loggedInUser; // Initialize LoggedInUser
             Seats = new ObservableCollection<Seat>();
             ToggleSeatCommand = new RelayCommand(ToggleSeat);
             ReservarCommand = new RelayCommand(Reservar);
@@ -160,7 +163,7 @@ namespace ProyectoFinal
         private void OpenClientManagementWindow(object parameter)
         {
             var selectedSeats = Seats.Where(s => s.IsSelected).ToList();
-            var clientManagementWindow = new ClientManagementWindow(ScheduleID, selectedSeats, SelectedMovie);
+            var clientManagementWindow = new ClientManagementWindow(ScheduleID, selectedSeats, SelectedMovie, LoggedInUser); // Pass the loggedInUser
             clientManagementWindow.Show();
             this.Close();
         }

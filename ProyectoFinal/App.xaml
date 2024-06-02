@@ -2,9 +2,13 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ProyectoFinal"
-             StartupUri="MainWindow.xaml">
+             StartupUri="LoginWindow.xaml">
     <Application.Resources>
-        <local:BooleanToBrushConverter x:Key="BooleanToBrushConverter"/>
-        <local:BoolToColorConverter x:Key="BoolToColorConverter"/>
+        <ResourceDictionary>
+            <local:BooleanToBrushConverter x:Key="BooleanToBrushConverter"/>
+            <local:BoolToColorConverter x:Key="BoolToColorConverter"/>
+            <local:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
+            <local:NullToBoolConverter x:Key="NullToBoolConverter"/>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

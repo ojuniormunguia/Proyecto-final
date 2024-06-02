@@ -32,13 +32,15 @@ namespace ProyectoFinal
         private int ScheduleID { get; set; }
         private List<Seat> SelectedSeats { get; set; }
         private Movie SelectedMovie { get; set; }
+        private User LoggedInUser { get; set; }  // Add this line
 
-        public ClientManagementWindow(int scheduleID, List<Seat> selectedSeats, Movie selectedMovie)
+        public ClientManagementWindow(int scheduleID, List<Seat> selectedSeats, Movie selectedMovie, User loggedInUser)  // Add loggedInUser parameter
         {
             InitializeComponent();
             ScheduleID = scheduleID;
             SelectedSeats = selectedSeats;
             SelectedMovie = selectedMovie;
+            LoggedInUser = loggedInUser; // Initialize LoggedInUser
             Clients = new ObservableCollection<Client>();
             NewClient = new Client();
             AddClientCommand = new RelayCommand(AddClient);
@@ -167,7 +169,8 @@ namespace ProyectoFinal
                 }
             }
 
-            var summaryWindow = new SummaryWindow(SelectedMovie, newTickets);
+            // Ensure the loggedInUser is passed
+            var summaryWindow = new SummaryWindow(SelectedMovie, newTickets, LoggedInUser);
             summaryWindow.Show();
             this.Close();
         }
